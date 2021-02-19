@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    tools:context=".activities.FileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_file_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Имя файла" />
+
+        <TextView
+            android:id="@+id/tv_file_extension"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=".txt" />
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_file_contents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#dadada"
+        android:gravity="top"
+        android:hint="Содержимое файла"
+        android:lines="5"
+        android:padding="8dp" />
+
+    <Switch
+        android:id="@+id/sw_cache_file"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Временный файл?" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Выберите место хранения" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rb_internal_storage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Внутренняя память" />
+
+        <RadioButton
+            android:id="@+id/rb_external_storage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Внешняя память" />
+
+        <RadioButton
+            android:id="@+id/rb_shared_storage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:text="Общая память" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:onClick="onBtnClick"
+            android:text="Удалить" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1"
+            android:onClick="onBtnClick"
+            android:text="Сохранить" />
+
+    </LinearLayout>
+
+</LinearLayout>
