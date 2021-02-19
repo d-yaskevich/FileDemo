@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.myfirst.filedemo.managers.FileManager;
+import com.myfirst.filedemo.models.MyFile;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
     private final LayoutInflater inflater;
     private final ArrayList<File> files = new ArrayList<>();
     private final ArrayList<Uri> uris = new ArrayList<>();
+//    private final ArrayList<MyFile> files = new ArrayList<>();
     private final OnItemClickListener listener;
 
     public FileAdapter(Context context, OnItemClickListener listener) {
@@ -32,10 +34,12 @@ public class FileAdapter extends RecyclerView.Adapter<FileAdapter.FileViewHolder
 
     public interface OnItemClickListener {
         void onItemClick(File file, Uri uri);
+//        void onDeleteItemClick(File file, Uri uri); // for example
     }
 
     public void clear() {
         files.clear();
+        uris.clear();
         notifyDataSetChanged();
     }
 

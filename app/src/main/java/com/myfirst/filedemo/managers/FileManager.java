@@ -39,6 +39,7 @@ public class FileManager {
 
     @Nullable
     public String getFileName(Uri uri) {
+        // uri = "file://...", "content://..."
         String fileName = null;
 
         try (Cursor cursor = context.getContentResolver()
@@ -91,7 +92,8 @@ public class FileManager {
         StringBuilder stringBuilder = new StringBuilder();
 
         try (InputStream inputStream = context.getContentResolver().openInputStream(uri);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+             BufferedReader reader = new BufferedReader(inputStreamReader)) {
 
             String line = reader.readLine();
             while (line != null) {
@@ -104,8 +106,8 @@ public class FileManager {
     }
 
     @Nullable
-    public File saveFile(@NonNull String name,
-                         @NonNull String suffix,
+    public File saveFile(@NonNull String name, //"name"
+                         @NonNull String suffix, //".txt"
                          @NonNull String contents,
                          @NonNull Storage storage,
                          boolean cache) throws IOException {
