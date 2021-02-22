@@ -1,111 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
-    android:orientation="vertical"
-    tools:context=".activities.FileActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/et_file_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Имя файла" />
-
-        <TextView
-            android:id="@+id/tv_file_extension"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=".txt" />
-
-    </LinearLayout>
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
+        android:inputType="text"
+        android:id="@+id/et_file_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        tools:ignore="Autofill"
+        android:hint="@string/file_name"
+        app:layout_constraintEnd_toStartOf="@+id/tv_file_extension"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_file_extension"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/file_extension"
+        app:layout_constraintBottom_toBottomOf="@+id/et_file_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_file_name" />
+
+    <EditText
+        android:inputType="text"
         android:id="@+id/et_file_contents"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#dadada"
         android:gravity="top"
-        android:hint="Содержимое файла"
+        tools:ignore="Autofill"
+        android:hint="@string/file_contents"
         android:lines="5"
-        android:padding="8dp" />
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/et_file_name"/>
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/sw_cache_file"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Временный файл?" />
+        android:text="@string/cache_file"
+        app:layout_constraintTop_toBottomOf="@id/et_file_contents" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Выберите место хранения" />
-
-    <RadioGroup
+        android:id="@+id/tv_choose_storage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginTop="16dp"
+        android:text="@string/choose_storage"
+        app:layout_constraintTop_toBottomOf="@id/sw_cache_file" />
+
+    <RadioGroup
+        android:id="@+id/rg_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_choose_storage">
 
         <RadioButton
             android:id="@+id/rb_internal_storage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
-            android:text="Внутренняя память" />
+            android:text="@string/internal_storage" />
 
         <RadioButton
             android:id="@+id/rb_external_storage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
-            android:text="Внешняя память" />
+            android:text="@string/external_storage" />
 
         <RadioButton
             android:id="@+id/rb_shared_storage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="onRadioButtonClicked"
-            android:text="Общая память" />
+            android:text="@string/shared_storage" />
 
     </RadioGroup>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:onClick="onBtnClick"
+        android:text="@string/delete_constraint"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/btn_save"
+        app:layout_constraintTop_toBottomOf="@id/rg_constraint" />
 
-        <Button
-            android:id="@+id/btn_delete"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="4dp"
-            android:layout_weight="1"
-            android:onClick="onBtnClick"
-            android:text="Удалить" />
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:onClick="onBtnClick"
+        android:text="@string/save_constraint"
+        app:layout_constraintTop_toBottomOf="@id/rg_constraint"
+        app:layout_constraintLeft_toRightOf="@id/btn_delete"
+        app:layout_constraintRight_toRightOf="parent" />
 
-        <Button
-            android:id="@+id/btn_save"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_weight="1"
-            android:onClick="onBtnClick"
-            android:text="Сохранить" />
 
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
