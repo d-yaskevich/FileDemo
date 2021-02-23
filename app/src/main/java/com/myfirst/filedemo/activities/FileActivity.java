@@ -56,6 +56,7 @@ public class FileActivity extends AppCompatActivity {
     private RadioButton rbExternalStorage;
     private RadioButton rbSharedStorage;
     private Button btnSave;
+    private Button btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,7 +118,7 @@ public class FileActivity extends AppCompatActivity {
         rbExternalStorage.setChecked(fileStorage == Storage.External);
         rbSharedStorage.setChecked(fileStorage == Storage.Shared);
 
-        Button btnDelete = findViewById(R.id.btn_delete);
+        btnDelete = findViewById(R.id.btn_delete);
         btnDelete.setEnabled(file != null || uri != null);
 
         btnSave = findViewById(R.id.btn_save);
@@ -155,6 +156,7 @@ public class FileActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_delete:
                 if (deleteFileIfExisted()) {
+                    deleteFileIfExisted();
                     setOkResult();
                 }
                 break;

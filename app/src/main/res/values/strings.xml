@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">FileDemo</string>
+    <string name="file_name">Имя файла</string>
+    <string name="file_extension">.txt</string>
+    <string name="file_contents">Содержимое файла</string>
+    <string name="cache_file">Временный файл?</string>
+    <string name="choose_storage">Выберите место хранения</string>
+    <string name="internal_storage">Внутренняя память</string>
+    <string name="external_storage">Внешняя память</string>
+    <string name="shared_storage">Общая память</string>
+    <string name="delete_constraint">Удалить</string>
+    <string name="save_constraint">Сохранить</string>
+    <string name="select_file">Выбрать файл</string>
 </resources>
